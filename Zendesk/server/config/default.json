@@ -1,0 +1,4 @@
+{
+    "mongoURI":
+      "mongodb+srv://camel:Camel12@cluster0.okest.mongodb.net/zendesk?retryWrites=true&w=majority"
+  }
