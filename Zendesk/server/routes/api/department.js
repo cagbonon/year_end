@@ -10,4 +10,6 @@ router.post('/', departmentController.store);  //store department
 
 router.post('/:id', departmentController.show);  //find department by id
 
+router.patch('/:id', departmentController.update);  //update department 
+
 module.exports = router;

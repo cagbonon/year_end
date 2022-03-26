@@ -90,7 +90,28 @@ function show(req, res) {
     });
 }
 
-
+function destroy(req,res){
+    User.findByIdAndRemove(req.params.id).then((result) => {
+        if(result != null){
+            return res.status(200).json({
+                'success': true,
+                'message': "Suppression effectuée"
+            })
+        }
+        else{
+            return res.status(200).json({
+                'success': true,
+                'message': "Utilisateur inexistant"
+            })
+        }
+      
+    }).catch((err) => {
+        return res.status(500).json({
+            "success": false,
+            "message": "Suppression impossible"
+        });
+    });
+}
 
 
 
@@ -100,5 +121,6 @@ module.exports =
 {
     index: index,
     store: store,
-    show : show
+    show : show,
+    destroy : destroy
 };
