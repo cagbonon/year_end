@@ -2,32 +2,53 @@ import React, {useEffect, useState} from 'react';
 import {PageItem, Form, Button, Row, Col} from 'react-bootstrap';
 import Previews from './File_comp';
 import './tickets_form.css';
+import axios from 'axios';
+
 // import Proptypes from 'prop-types'
 
 
 export const Tickets_form = (manage_submit, change_value, frmDataErro, frmDt) => {
-    console.log(frmDt);
+// export default class Tickets_form extends React.Component {
+    // console.log(frmDt);
+    // state = {
+    //     name: '',
+    //   }
+    
+    //   handleChange = event => {
+    //     this.setState({ name: event.target.value });
+    //   }
+    
+    //   handleSubmit = event => {
+    //     event.preventDefault();
+    
+    //     const user = {
+    //       name: this.state.name
+    //     };
     return (
         <PageItem className="mt-3 add-new-ticket
             bg-light">
                 <h4 className="text-secondary text-center">Add a new ticket</h4>
                 <hr />
-                <Form.Select size='sm' aria-label="Default select example">
-                    <option>Départements</option>
-                     <option value="1">Bocal</option>
-                    <option value="2">Finance Department</option>
-                    <option value="3">Administrative Department</option>
-                    <option value="3">Pedagogy Department</option>
-                    <option value="3">Directors Department</option>
-                    <option value="3">Carrer Center Department</option>
-                    <option value="3">Communication Department</option>
-                    <option value="3">Other</option>
-                </Form.Select>  
+                 
              <Form autoComplete="off" onSubmit={manage_submit}>
+                    <Form.Group>
+                        <Form.Label column sm={3}>Départements</Form.Label>
+                        <Form.Select name="departement" size='sm' aria-label="Default select example">
+                            <option value="1">Bocal</option>
+                            <option value="2">Finance Department</option>
+                            <option value="3">Administrative Department</option>
+                            <option value="4">Pedagogy Department</option>
+                            <option value="5">Directors Department</option>
+                            <option value="6">Carrer Center Department</option>
+                            <option value="7">Communication Department</option>
+                            <option value="8">Other</option>
+                        </Form.Select>
+                    </Form.Group> 
                     <Form.Group as={Row}>
                         <Form.Label column sm={3}>À</Form.Label>
                         <Col sm={20}>
                             <Form.Control 
+                            name="email"
                             type="sujet"
                             // value={frmDt.sujet}
                             // onChange={change_value}
@@ -47,8 +68,8 @@ export const Tickets_form = (manage_submit, change_value, frmDataErro, frmDt) =>
                         </Form.Label>
                         <Col sm={20}>
                             <Form.Control 
+                            name="cc"
                             type="cc"
-                            name="issueDate"
                             // value={frmDt.issueDate}
                             required
                              />
@@ -70,7 +91,7 @@ export const Tickets_form = (manage_submit, change_value, frmDataErro, frmDt) =>
                         <Form.Label>Description*</Form.Label>
                         <Form.Control 
                         as="textarea"
-                        name="detail"
+                        name="description"
                         // value={frmDt.detail}
                         rows="5"
                         required

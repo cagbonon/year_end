@@ -37,7 +37,7 @@ export const Close_tick = () => {
                 <div className="status">Status: {ticket.addedAt}</div>
            </Col>
            <Col className='text-right'> 
-               <Button href="/dashboard" variant="secondary">Close ticket</Button> 
+               <Button href="/dashboard" variant="danger">Close ticket</Button> 
            </Col>
        </Row>
         <Row className="mt-4">

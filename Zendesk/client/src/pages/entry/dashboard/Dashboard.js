@@ -20,7 +20,7 @@ export const Dashboard = () => {
             </Row>
             <Row>
                 <Col className="text-center mt-5 mb-2">
-                    <Button href="/ticket"variant="secondary" bg="green" style={{"fontSize": "0.7rem", 
+                    <Button href="/ticket"variant="warning" bg="green" style={{"fontSize": "0.7rem", 
                     padding: "10px 10px"}}>
                         Add new Tickets</Button>
                 </Col>
