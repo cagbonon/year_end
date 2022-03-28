@@ -5,7 +5,7 @@ import './tickets_form.css';
 import axios from 'axios';
 
 // import Proptypes from 'prop-types'
-import axios from 'axios'
+//import axios from 'axios'
 
 
 export default function  AddTicket() {
@@ -20,8 +20,10 @@ export default function  AddTicket() {
     const handleTicket = async (e) => {
         e.preventDefault();
 
+
+
         axios
-            .post("http://localhost:8000/tickets/createTicket", {
+            .post("http://localhost:8000/tickets/", {
                 department,
                 cc,
                 subject,
@@ -30,7 +32,7 @@ export default function  AddTicket() {
             })
             .then((response) => {
                 console.log(response.data);
-                return response.data;
+                //response.data;
                 window.location = "/dashboard";
             })
             .catch((err) => {

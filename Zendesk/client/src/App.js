@@ -104,7 +104,7 @@ const adminRoutes = [
           </div>)}
         />
         <Route path="/dashboard" element={passLayout(adminRoutes,<Dashboard />)} />
-        <Route path="/ticket" element={passLayout(defaultRoutes, <Tickets_form />)} />
+        <Route path="/ticket" element={passLayout(defaultRoutes, <AddTicket />)} />
         <Route path="/tickets" element={passLayout(defaultRoutes,<Ticket_lists />)} />
         <Route path="/:id" element={passLayout(defaultRoutes, <Close_tick />)} />
         <Route path="/inscription" element={passLayout(adminRoutes, <Inscription />)} />

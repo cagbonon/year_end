@@ -1,75 +1,65 @@
-import React, { useState } from "react";
-import PropTypes from 'prop-types';
-import { /*Row,*/ Table, Button, Alert } from "react-bootstrap";
-import {generatePath, Link} from 'react-router-dom';
-import "../../assets/styles/index.css";
-import Modal from "../modal/Modal";
+//import PostProfile from "../components/PostLibrary";
+//import styles from "../styles/Home.module.css";
+import axios from "axios";
+import PostTicket from "../postTicket";
+import React, { useEffect } from "react";
+import { useState } from "react";
+
+//import Header from "../components/Header";
+//import Footer from "../components/Footer";
+
+export const  Tickets = ()=> {
 
 
-export const Tickets = ({tickets}) => {
-    // if(!tickets.length)
-    let newTickets = tickets
-    const deleteTicket = (e, id) => {
-        tickets.splice(id, 1)
-        newTickets = tickets
-        // window.location.reload(true);
-        console.log(newTickets)
-    }
-    const [isOpen, setIsOpen] = useState(false);
+   
+    const [Posts, setPost] = useState([])
+    // console.log('jfhjljl');
 
-    const state = {
-        show: false
-      };
-     const showModal = e => {
-        this.setState({
-          show: true
-        });
-      };
-    return <Table id="customers" striped bordered hover>
-        <thead>
+    useEffect(() => {
 
-            <tr>
-                <th>#</th>
-                <th>Sujet</th>
-                <th>ID</th>
-                <th>Caution</th>
-                <th>Dernière activité</th>
-                <th>Statut</th>
-                <th>Effacer</th>
-            </tr>
-        </thead>
-        <tbody>
-            {newTickets.length ? 
-            newTickets.map(({id, sujet, status,addedAt, act,stat}) => (
-            <tr onChange={newTickets} key={id}>
-                <td>{id}</td>
-                <Link to={generatePath(`/:id`,{id}) }>
-                <td>{sujet}</td>
-                </Link>
-                <td>{status}</td>
-                <td>{addedAt}</td>
-                <td>{act}</td>
-                <td>
-                    <Alert variant={stat === "résolu" ? "success" : "danger"}>{stat}</Alert>
-                </td>
-                <td>
-                    {/* <div class="modal-vue">
-                        <Button onClick={() => setIsOpen(true)} variant="danger">X</Button>
-                        {isOpen && <div class="overlay" onClick={() => setIsOpen(false)} ></div>}
-                        {isOpen && <Modal class="modal" setIsOpen={setIsOpen} />}
-                    </div> */}
-                    <Button onClick={() => deleteTicket(id-1)} variant="danger">X</Button>
-                </td>
-            </tr>)) :
+      axios
+      .get("http://localhost:8000/tickets")
+      .then((response) => {
+        setPost(response.data.tickets)
+        // console.log(response.data.tickets);s
+        
+      })
+      .catch((err) => {
+        console.log(err);
+      });
 
-            <tr>
-                <td colSpan="4" className="text-center">No ticket show</td>
-            </tr>
-            }
-        </tbody>
-    </Table>;
-};
+    }, []);
 
-Tickets.propTypes = {
-    tickets: PropTypes.array.isRequired,
+     
+  
+    // return {
+    //   props: {
+    //     posts: data,
+    //   },
+    // };
+  
+  //  console.log(data)
+  return (
+    <div className="d-flex flex-column min-vh-100">
+
+      <main>
+        <div className="card">
+          {!Posts || Posts.length === 0 ? (
+            <h2>Pas de ticket disponible</h2>
+          ) : (
+            <div
+              className="d-flex w-100 justify-content-center"
+              style={{ flexWrap: "wrap" }}
+            >
+              {Posts.map((post, i) => (
+                <PostTicket post={post} key={i} />
+              ))}
+            </div>
+          )}
+        </div>
+      </main>
+    </div>
+  );
 }
+
+
