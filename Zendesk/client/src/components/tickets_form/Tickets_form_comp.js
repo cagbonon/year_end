@@ -15,7 +15,7 @@ export default function  AddTicket() {
     const [cc, setCc] = useState("");
     const [subject, setSubject] = useState("");
     const [description, setDescription] = useState("");
-    //const [url_image, setUrl_image] = useState("");
+    const [url_image, setUrl_image] = useState("");
 
     const handleTicket = async (e) => {
         e.preventDefault();
@@ -28,7 +28,7 @@ export default function  AddTicket() {
                 cc,
                 subject,
                 description,
-                //url_image,
+                url_image,
             })
             .then((response) => {
                 console.log(response.data);
@@ -47,7 +47,7 @@ export default function  AddTicket() {
 
 
         <div className="container my-5 ">
-        <form
+        <form 
         onSubmit={handleTicket}
         style={{ width: "90%", maxWidth: "600px", margin: "3rem auto" }}
         
@@ -57,7 +57,7 @@ export default function  AddTicket() {
 
         
         <div className="mb-3">
-                <select 
+                <select  className='form-control'
                 onChange={(e) => setDepartment(e.target.value)}
                 value = {department}
                 >
@@ -79,12 +79,13 @@ export default function  AddTicket() {
             <label htmlFor="firstnameInput1" className="form-label">
             Cc
             </label>
-            <input
+            <input className='form-control'
             type="email"
             name="cc"
             value={cc}
             onChange = {(e) => setCc(e.target.value)}
             required
+            placeholder='xyz@email.com'
             
             />
         </div>
@@ -94,15 +95,15 @@ export default function  AddTicket() {
             <label htmlFor="exampleInputEmail1" className="form-label">
             Sujet
             </label>
-            <input
+            <input className='form-control'
             type="text"
-            className="form-control "
             id=""
             name="subject"
             value={subject}
             onChange = {(e) => setSubject(e.target.value)}
             rows="3"
             required
+            placeholder='Entrez un sujet'
             
             />
 
@@ -113,17 +114,18 @@ export default function  AddTicket() {
             <label htmlFor="exampleInputPassword1" className="form-label">
             Description
             </label>
-            <input
+            <textarea className='form-control'
             type="text"
-            className="form-control"
             id=""
             name="description"
             value={description}
             onChange = {(e) => setDescription(e.target.value)}
             rows="5"
             required
+            placeholder='Entrez une description'
             
-            />
+            ></textarea>
+                
         
         </div>
         

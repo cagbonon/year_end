@@ -4,6 +4,7 @@ import axios from "axios";
 import PostTicket from "../postTicket";
 import React, { useEffect } from "react";
 import { useState } from "react";
+import { Table } from "react-bootstrap";
 
 //import Header from "../components/Header";
 //import Footer from "../components/Footer";
@@ -51,9 +52,39 @@ export const  Tickets = ()=> {
               className="d-flex w-100 justify-content-center"
               style={{ flexWrap: "wrap" }}
             >
-              {Posts.map((post, i) => (
-                <PostTicket post={post} key={i} />
-              ))}
+
+                <table className="table table-bordered table-striped" style={{'font-size' : '20px'}}>
+                  <thead className="" style={{'text-align' : 'center', 'background-color' : 'green', 'border' : 'none', 'color' : 'white' }}>
+                    <tr style={{'border' : 'none'}}>
+                    <th>Id</th>
+                    <th>Sujet</th>
+                    <th>Description</th>
+                    {/* <th>Commentaires</th> */}
+                    <th>Département</th>
+                    <th>Statut</th>
+                    <th>Date</th>
+                    <th>Actions</th>
+
+                    </tr>
+                  </thead>
+                  <tbody style={{'border-top' : 'none'}}>
+                  {Posts.map((post, i) => (
+                   <PostTicket post={post} key={i} />
+                   ))}
+                    {/* <tr>
+                      <td>Id</td>
+                      <td>Sujet</td>
+                      <td>Description</td>
+                      <td>Commentaires</td>
+                      <td>Département</td>
+                      <td>Statut</td>
+                      <td>Date</td>
+                      <td>Actions</td>                      
+                    </tr> */}
+                  </tbody>
+                </table>
+
+
             </div>
           )}
         </div>

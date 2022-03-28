@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faEdit, faUser } from "@fortawesome/free-solid-svg-icons";
 import React from "react";
+import { Table } from "react-bootstrap";
 
 export default function PostTicket({ post }) {
 
@@ -36,7 +37,36 @@ export default function PostTicket({ post }) {
 
   return (
     <>
-      <div
+      
+      <tr>
+        <td style={{'color' : 'black', 'padding' : '15px'}}>{post._id}</td>
+        <td style={{'color' : '#7a7a7a', 'padding' : '15px'}}>{post.subject}</td>
+        <td style={{'color' : '#7a7a7a', 'padding' : '15px'}}>{post.description}</td>
+        {/* <td>{post.commentaire}</td> */}
+        <td style={{'color' : '#7a7a7a', 'padding' : '15px'}}>{post.department}</td>
+
+        
+
+        <td style={{'color' : '#7a7a7a', 'padding' : '15px'}}>{post.status}</td>
+        
+        <td style={{'color' : '#7a7a7a', 'padding' : '15px'}}>{post.updated_date.split('T')[0]} at {post.updated_date.split('T')[1].split('.')[0]} </td>
+        <td>
+          <button type="button" className="btn btn-primary">ALLO</button>  &nbsp;
+          <button type="button" className="btn btn-warning">ALLO</button>   &nbsp;
+          <button type="button" className="btn btn-danger">ALLO</button>  
+        </td>                
+      </tr>
+
+
+
+
+
+
+
+
+
+
+      {/* <div
         className="card m-4 p-0 w-25 unCard"
         style={{
           fontSize: "1.1rem",
@@ -85,10 +115,10 @@ export default function PostTicket({ post }) {
                    */}
                   
                   
-
+{/*
           </div>
         </div>
-      </div>
+      </div> */}
     </>
   );
 }
