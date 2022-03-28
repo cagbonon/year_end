@@ -80,11 +80,86 @@ function show(req, res) {
     });
 }
 
+function destroy(req,res){
+    Department.findByIdAndRemove(req.params.id).then((result) => {
+        console.log(req.params.id);
+        if(result != null){
+            res.status(200).json({
+                'success': true,
+                'message': "Suppression effectuée"
+            })
+        }
+        else{
+            res.status(200).json({
+                'success': true,
+                'message': "Departement introuvable"
+            })
+        }
+      
+    }).catch((err) => {
+        res.status(500).json({
+            "success": false,
+            "message": "Suppression impossible"
+        });
+    });
+}
+
+function update(req,res){
+
+    const department = {
+        name: req.body.name,
+    }
+
+    
+    const validator = new Validator();
+
+    const schema = {
+        name: { type: 'string', optional: false, },
+    }
+
+    const validationResponse = validator.validate(department, schema);
+
+    if (validationResponse) {
+        
+        const updateOfDepartment = req.body;
+       
+        Department.findByIdAndUpdate(req.params.id, {$set : req.body}).then((result) => {
+            if(result != null){
+                res.status(200).json({
+                    'success': true,
+                    'message': "Mise à jour effectuée"
+                })
+            }
+            else{
+                res.status(200).json({
+                    'success': true,
+                    'message': "Departement introuvable"
+                })
+            }
+          
+        }).catch((err) => {
+            res.status(500).json({
+                "success": false,
+                "message": "Modification impossible"
+            });
+        });
+
+    }
+    else {
+        res.status(500).json({
+            "success": false,
+            "message": "Nom incorrect"
+        });
+    }
+    
+}
 
 
 module.exports =
 {
     index: index,
     store: store,
-    show : show
+    show : show,
+    destroy : destroy,
+    update : update,
 };

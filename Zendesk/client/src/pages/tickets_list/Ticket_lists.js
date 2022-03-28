@@ -38,7 +38,7 @@ export const Ticket_lists = () => {
 
         <Row className='mt-4'>
             <Col>
-                <Button href="/ticket" variant='secondary'>New ticket</Button>
+                <Button href="/ticket" variant='warning'>New ticket</Button>
             </Col>
 
             <Col className='text-right'></Col>

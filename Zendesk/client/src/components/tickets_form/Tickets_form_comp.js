@@ -2,6 +2,8 @@ import React, {useEffect, useState} from 'react';
 import {PageItem, Form, Button, Row, Col} from 'react-bootstrap';
 import Previews from './File_comp';
 import './tickets_form.css';
+import axios from 'axios';
+
 // import Proptypes from 'prop-types'
 import axios from 'axios'
 

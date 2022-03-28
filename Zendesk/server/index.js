@@ -1,10 +1,5 @@
 const express = require("express");
-const msal = require('@azure/msal-node');
-const bodyParser = require('body-parser');
-const connectDB = require('./config/db');
-const Thing = require('./models/ticket');
 const Ticket = require("./models/ticket");
-
 
 
 const SERVER_PORT = 3000;

@@ -13,7 +13,7 @@ export const Update_tickets_comp = ({msg, change_value, manage_submit}) => {
         as="textarea" rows="5"
         name="detail" />
         <div className="text-right mt-3 mb-3">
-            <Button variant="info" type="Submit">Reply</Button>
+            <Button variant="success" type="Submit">Reply</Button>
         </div>
     </Form>
  )
