@@ -34,7 +34,7 @@ function store(req, res) {
     //const validationResponse = true;
 
  const departements = {
-     "Bocal" : ["francky-gires.fanou@epitech.eu"],
+     "Bocal" : ["emmanuel.solomo@epitech.eu", "daryl.medegan@epitech.eu"],
      "Finance ":["jaures.gomez@epitech.eu","judith-marielle.dossou-yovo@epitech.eu"],
     "Administrative" : ["rockyath.amoussa@epitech.eu","chistelle.houssou@epitech.eu", "emmanuel.solomon@epitech.eu"],
     "Pedagogy" : ["irys1.gbessemehlan@epitech.eu","daryl.medegan@epitech.eu","emmanuel.solomon@epitech.eu","lawal.alao@epitech.eu","ghislain.gandjonon@epitech.eu"],
