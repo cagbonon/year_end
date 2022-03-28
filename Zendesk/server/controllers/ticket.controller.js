@@ -9,7 +9,7 @@ var nodeoutlook = require('nodejs-nodemailer-outlook')
 
 
 function store(req, res) {
-
+    
     const ticket = {
         department: req.body.department,
         subject: req.body.subject,
@@ -34,7 +34,7 @@ function store(req, res) {
     //const validationResponse = true;
 
  const departements = {
-     "Bocal" : ["daryl.medegan@epitech.eu"],
+     "Bocal" : ["francky-gires.fanou@epitech.eu"],
      "Finance ":["jaures.gomez@epitech.eu","judith-marielle.dossou-yovo@epitech.eu"],
     "Administrative" : ["rockyath.amoussa@epitech.eu","chistelle.houssou@epitech.eu", "emmanuel.solomon@epitech.eu"],
     "Pedagogy" : ["irys1.gbessemehlan@epitech.eu","daryl.medegan@epitech.eu","emmanuel.solomon@epitech.eu","lawal.alao@epitech.eu","ghislain.gandjonon@epitech.eu"],
@@ -79,7 +79,7 @@ function store(req, res) {
 
 function index(req, res) {
 
-    Ticket.find().then((result) => {
+    Ticket.find().sort({createdAt : 'asc'}).then((result) => {
       return  res.status(200).json({
             'success': true,
             'tickets': result
@@ -108,6 +108,26 @@ function show(req, res) {
 }
 
 
+function destroy(req, res) {
+
+    Ticket.findById(req.params.id).then((result) => {
+        Ticket.deleteOne({ _id: req.params.id})
+        .then(() => {
+            res.status(200).json({
+                message: "Deleted!" ,
+            });
+        })
+        .catch((error) => {
+            res.status(400).json({
+                error : error ,
+            });
+        });
+
+    })
+
+}
+
+
 
 
 
@@ -117,6 +137,7 @@ module.exports =
 {
     index: index,
     store: store,
-    show : show
+    show : show,
+    destroy: destroy,
 };
 

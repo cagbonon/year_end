@@ -12,7 +12,7 @@ router.post('/:id', ticketController.show);  //find ticket by id
 
 router.delete('/:id', ticketController.destroy);  //find ticket by id
 
-router.patch('/:id', ticketController.updateStatus);  //find ticket by id
+//router.patch('/:id', ticketController.update);  //find ticket by id
 
 //router.get('/update', ticketController.index);
 
