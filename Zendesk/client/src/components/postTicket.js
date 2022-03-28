@@ -51,9 +51,9 @@ export default function PostTicket({ post }) {
         
         <td style={{'color' : '#7a7a7a', 'padding' : '15px'}}>{post.updated_date.split('T')[0]} at {post.updated_date.split('T')[1].split('.')[0]} </td>
         <td>
-          <button type="button" className="btn btn-primary">ALLO</button>  &nbsp;
-          <button type="button" className="btn btn-warning">ALLO</button>   &nbsp;
-          <button type="button" className="btn btn-danger">ALLO</button>  
+          <button type="button" className="btn btn-primary">DETAIL</button>  &nbsp;
+          <button type="button" className="btn btn-warning">DETAIL</button>   &nbsp;
+          <button type="button" className="btn btn-danger">DETA</button>  
         </td>                
       </tr>
 

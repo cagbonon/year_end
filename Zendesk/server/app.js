@@ -6,6 +6,8 @@ const morgan = require('morgan');
 const userRoute = require('./routes/api/user');
 const ticketRoute = require('./routes/api/ticket');
 const departmentRoute = require('./routes/api/department');
+const multer  = require('multer');
+
 
 
 
@@ -39,6 +41,27 @@ app.use((req, res, next) => {
 
 app.use(bodyParser.json());
 app.use(morgan('dev'));
+
+
+const filleStorageEngine = multer.diskStorage({
+  destination: (req, file, cb) => {
+      cb(null, './assets')
+  },
+  filename: (req, file, cb) => {
+      cb(null, Date.now() + file.originalname)
+  }
+});
+
+const upload = multer({storage: filleStorageEngine});
+
+app.use(bodyParser.json());
+app.use(morgan('dev'));
+
+app.post("/images", upload.array('images', 5),(req, res) => {
+  console.log(req.files);
+  res.send(req.files.filename);
+  // res.send("Les images sont enregistrés succes");
+});
 
 
 

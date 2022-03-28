@@ -17,18 +17,60 @@ export default function  AddTicket() {
     const [description, setDescription] = useState("");
     const [url_image, setUrl_image] = useState("");
 
+
+    const previewFile = async (e) => {
+        const preview = document.querySelector(".image");
+        const file = document.querySelector("#fileInput").files[0];
+        const reader = new FileReader();
+
+        reader.addEventListener("load", function () {
+            preview.src = reader.result;
+        }, false);
+
+        if (file) {
+            reader.readAsDataURL(file)
+        }
+        setUrl_image(e.target.files[0])
+    }
+
+    async function uploadFile(file) {
+        const url = `https://api.cloudinary.com/v1_1/nemesisx1/upload`;
+        const fd = new FormData();
+    
+        fd.append(
+          "upload_preset",
+          'msywympw'
+        );
+        fd.append("tags", "browser_upload");
+        fd.append("file", file);
+        
+        const response = await axios.post(url, fd, {
+            headers: {
+                "X-Requested-With": "XMLHttpRequest",
+            }
+        });
+
+        console.log(response.data);
+        return response.data.secure_url;
+      }
+
+
+    
+
     const handleTicket = async (e) => {
         e.preventDefault();
 
+        let img = await uploadFile(url_image)
 
+        // console.log(img)
 
-        axios
+        await axios
             .post("http://localhost:8000/tickets/", {
-                department,
-                cc,
-                subject,
-                description,
-                url_image,
+                department : department,
+                cc : cc,
+                subject : subject,
+                description : description,
+                url_image : img,
             })
             .then((response) => {
                 console.log(response.data);
@@ -129,7 +171,15 @@ export default function  AddTicket() {
         
         </div>
         
-        <Previews />
+        <div>
+            <img className='image' src="" alt="" width="100%" />
+            <br />
+            <input type="file" id="fileInput" className="form-control"
+             onChange={previewFile} />
+        </div>
+
+        {/* <Previews /> */}
+        <br />
 
         <button type="submit" className="btn btn-primary">
             Add Ticket

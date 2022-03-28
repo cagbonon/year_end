@@ -18,7 +18,7 @@ function store(req, res) {
         cc: req.body.cc
     }
 
-    console.log(ticket);
+    // console.log(ticket);
 
     const validator = new Validator();
 
@@ -46,6 +46,7 @@ function store(req, res) {
     
     }
     if (validationResponse) {
+        // console.log(req.body)
         
         const ticketToSave = new Ticket({
             department:  req.body.department,
@@ -55,13 +56,15 @@ function store(req, res) {
             cc : req.body.cc
         });
 
+        console.log(ticketToSave)
         ticketToSave.save().then(() => {
            
            const email = departements[req.body.department]
            const sujet = req.body.subject
            const description = req.body.description
            const cc = req.body.cc
-           nodemailer.sendConfirmationEmail(email,sujet,description,cc)
+           const url_image = req.body.url_image
+           nodemailer.sendConfirmationEmail(email,sujet,description,cc,url_image)
           return  res.status(200).json({
             'success': true,
             "message": "Enrégistrement réussi"
