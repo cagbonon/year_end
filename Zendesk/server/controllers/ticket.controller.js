@@ -34,12 +34,12 @@ function store(req, res) {
     //const validationResponse = true;
 
  const departements = {
-     "Bocal" : ["daryl.medegan@epitech.eu", "emmanuel.solomon@epitech.eu"],
+     "Bocal" : ["daryl.medegan@epitech.eu"],
      "Finance ":["jaures.gomez@epitech.eu","judith-marielle.dossou-yovo@epitech.eu"],
     "Administrative" : ["rockyath.amoussa@epitech.eu","chistelle.houssou@epitech.eu", "emmanuel.solomon@epitech.eu"],
     "Pedagogy" : ["irys1.gbessemehlan@epitech.eu","daryl.medegan@epitech.eu","emmanuel.solomon@epitech.eu","lawal.alao@epitech.eu","ghislain.gandjonon@epitech.eu"],
     "Directors" : ["emmanuel.solomon@epitech.eu","johannes.bruffaerts@epitech.eu","jerôme.medegan@epitech.eu"],
-    "Carrer Center" : ["anaelle.breteche@epitech.eu","ayele.sant-anna@epitech.eu"],
+    "Carrer_Center" : ["anaelle.breteche@epitech.eu","ayele.sant-anna@epitech.eu"],
     "Communication" : ["antoine.cocouvi@epitech.eu"],
     "Others" : ["marc-uriel-zinsou.boko@epitech.eu","boladji.odeloui@epitech.eu"]
  

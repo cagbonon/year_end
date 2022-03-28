@@ -10,7 +10,9 @@ import './App.css';
 import { DefaultLayout } from './components/layout/DefaultLayout';
 import {Close_tick} from './pages/close_tickets/Close_tick'
 import { Ticket_lists } from './pages/tickets_list/Ticket_lists';
-import { Tickets_form } from './components/tickets_form/Tickets_form_comp';
+//import { AddTicket } from './components/tickets_form/Tickets_form_comp';
+import AddTicket from "./components/tickets_form/Tickets_form_comp";
+import Previews from "./components/tickets_form/File_comp";
 import { Dashboard } from './pages/entry/dashboard/Dashboard';
 import {Button} from 'react-bootstrap';
 
@@ -75,7 +77,7 @@ const adminRoutes = [
       <Routes>
           <Route path="/" element={passLayout(isdefaultRoutes, <Loginpage/>)} />
           <Route path="/dashboard" element={passLayout(adminRoutes,<Dashboard />)} />
-          <Route path="/ticket" element={passLayout(defaultRoutes, <Tickets_form />)} />
+          <Route path="/ticket" element={passLayout(defaultRoutes, <AddTicket />)} />
           <Route path="/tickets" element={passLayout(defaultRoutes,<Ticket_lists />)} />
           <Route path="/:id" element={passLayout(defaultRoutes, <Close_tick />)} />
           <Route path="/inscription" element={passLayout(adminRoutes, <Inscription />)} />

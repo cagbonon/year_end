@@ -34,17 +34,17 @@ const img = {
 
 
 function Previews(props) {
-  const [files, setFiles] = useState([]);
+  const [url_image, setUrl_image] = useState([]);
   const {getRootProps, getInputProps} = useDropzone({
     accept: 'image/*',
-    onDrop: acceptedFiles => {
-      setFiles(acceptedFiles.map(file => Object.assign(file, {
+    onDrop: acceptedUrl_image => {
+      setUrl_image(acceptedUrl_image.map(file => Object.assign(file, {
         preview: URL.createObjectURL(file)
       })));
     }
   });
   
-  const thumbs = files.map(file => (
+  const thumbs = url_image.map(file => (
     <div style={thumb} key={file.name}>
       <div style={thumbInner}>
         <img
@@ -57,8 +57,8 @@ function Previews(props) {
 
   useEffect(() => {
     // Make sure to revoke the data uris to avoid memory leaks
-    files.forEach(file => URL.revokeObjectURL(file.preview));
-  }, [files]);
+    url_image.forEach(file => URL.revokeObjectURL(file.preview));
+  }, [url_image]);
 
   return (
     <section className="container">
