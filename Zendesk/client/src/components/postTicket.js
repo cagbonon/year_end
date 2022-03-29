@@ -3,11 +3,14 @@ import { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faEdit, faUser } from "@fortawesome/free-solid-svg-icons";
 import React from "react";
-import { Table } from "react-bootstrap";
+import { Table, Button, Modal } from "react-bootstrap";
 
 export default function PostTicket({ post }) {
 
+  const [show, setShow] = useState(false);
 
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
   // const [user, setUser] = useState("");
   //   useEffect(() => {
   //     if (!user) {
@@ -35,6 +38,7 @@ export default function PostTicket({ post }) {
       });
   };
 
+ 
   return (
     <>
       
@@ -42,6 +46,8 @@ export default function PostTicket({ post }) {
         <td style={{'color' : 'black', 'padding' : '15px'}}>{post._id}</td>
         <td style={{'color' : '#7a7a7a', 'padding' : '15px'}}>{post.subject}</td>
         <td style={{'color' : '#7a7a7a', 'padding' : '15px'}}>{post.description}</td>
+        {/* <td style={{'color' : '#7a7a7a', 'padding' : '15px'}}>{post.comments}</td> */}
+
         {/* <td>{post.commentaire}</td> */}
         <td style={{'color' : '#7a7a7a', 'padding' : '15px'}}>{post.department}</td>
 
@@ -51,9 +57,34 @@ export default function PostTicket({ post }) {
         
         <td style={{'color' : '#7a7a7a', 'padding' : '15px'}}>{post.updated_date.split('T')[0]} at {post.updated_date.split('T')[1].split('.')[0]} </td>
         <td>
-          <button type="button" className="btn btn-primary">DETAIL</button>  &nbsp;
-          <button type="button" className="btn btn-warning">DETAIL</button>   &nbsp;
-          <button type="button" className="btn btn-danger">DETA</button>  
+          <button type="button" className="btn btn-primary" onClick={handleShow}>DETAIL</button> 
+          <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Commentaires</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+        <div className="mb-10">
+            <label htmlFor="firstnameInput1" className="form-label">
+            </label>
+            <input className='form-control'
+            type="text"
+            name=""
+            
+            />
+        </div>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Fermer
+          </Button>
+          <Button variant="primary" onClick={handleClose}>
+            Sauvegarder
+          </Button>
+        </Modal.Footer>
+      </Modal>
+           &nbsp;
+          {/* <button type="button" className="btn btn-warning">DETAIL</button>   &nbsp;
+          <button type="button" className="btn btn-danger">DETAIL</button>  &nbsp; */}
         </td>                
       </tr>
 

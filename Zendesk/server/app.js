@@ -6,6 +6,7 @@ const morgan = require('morgan');
 const userRoute = require('./routes/api/user');
 const ticketRoute = require('./routes/api/ticket');
 const departmentRoute = require('./routes/api/department');
+const commentRoute = require('./routes/api/comment');
 const multer  = require('multer');
 
 
@@ -72,6 +73,7 @@ app.get('/', (req, res) => {
 });
 
 
+app.use('/comments', commentRoute);
 app.use('/users', userRoute);
 app.use('/tickets', ticketRoute);
 app.use('/departments', departmentRoute);

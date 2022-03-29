@@ -63,8 +63,7 @@ export const  Tickets = ()=> {
                     <th>Département</th>
                     <th>Statut</th>
                     <th>Date</th>
-                    <th>Actions</th>
-
+                    <th>Commit</th>
                     </tr>
                   </thead>
                   <tbody style={{'border-top' : 'none'}}>
